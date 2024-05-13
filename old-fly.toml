@@ -1,0 +1,43 @@
+# old-fly.toml app configuration file generated for sjwc-n8n on 2024-05-13T13:03:02-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'sjwc-n8n'
+primary_region = 'iad'
+
+[build]
+  image = 'n8nio/n8n'
+
+[env]
+  DB_POSTGRESDB_PORT = '5432'
+  DB_POSTGRESDB_USER = 'postgres'
+  DB_TYPE = 'postgresdb'
+  GENERIC_TIMEZONE = 'America/Menominee'
+  N8N_BASIC_AUTH_ACTIVE = 'false'
+  N8N_DIAGNOSTICS_ENABLED = 'false'
+  N8N_HIRING_BANNER_ENABLED = 'false'
+  N8N_LOG_LEVEL = 'info'
+  N8N_USER_MANAGEMENT_DISABLED = 'false'
+  TINI_SUBREAPER = 'true'
+  TZ = 'America/Menominee'
+
+[http_service]
+  internal_port = 5678
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+
+  [http_service.concurrency]
+    type = 'requests'
+    hard_limit = 250
+    soft_limit = 200
+
+#[mounts]
+#  source = 'vol_vpp91gn06x2ey3yv'
+#  destination = '/home/node/.n8n'
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
