@@ -19,3 +19,10 @@ When prompted:
 - DON'T TWEAK things (DEFAULT)
 
 Done!
+
+
+## Updates
+To update n8n:
+```
+$ flyctl deploy --no-cache
+```
